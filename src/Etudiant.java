@@ -1,4 +1,4 @@
-/* commentaire */ 
+/* commentaire1 */ 
 public class Etudiant {
 
 		private int matricule;
