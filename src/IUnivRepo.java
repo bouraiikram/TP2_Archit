@@ -1,4 +1,6 @@
 import java.sql.SQLException;
+package Interface;
+import Class.Universite;
 
 public interface IUnivRepo {
 	abstract Universite GetById(int universityId) throws SQLException;

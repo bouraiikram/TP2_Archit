@@ -1,4 +1,7 @@
 /* commentaire1 */ 
+package Class ; 
+Import Interface.IEtudiant ; 
+
 public class Etudiant implements IEtudiant {
 
 		private int matricule;

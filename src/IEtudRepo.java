@@ -1,3 +1,4 @@
+package interface ; 
 import java.sql.SQLException;
 
 public interface IEtudRepo {

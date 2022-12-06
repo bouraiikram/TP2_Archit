@@ -10,6 +10,9 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
+package Class;
+
+import Abstract.AbstractViewInscription;
 
 public class ViewInscription exetends AbstractViewInscription 
 {
@@ -103,7 +106,7 @@ public class ViewInscription exetends AbstractViewInscription
     public void ShowErreur(final String msg) {
         JOptionPane.showMessageDialog(new JFrame(), msg, "Erreur", 0);
     }
-    @Override
+    @Override 
     public void Init_Inscription() {
         this.TxtMat.setText("");
         this.TxtNom.setText("");

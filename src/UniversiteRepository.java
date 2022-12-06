@@ -1,8 +1,12 @@
+package Class;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import Interface.IJournal;
+import Interface.IUnivRepo;
+import Abstract.AbstractFactory;
 
 public class UniversiteRepository implements IUnivRepo { {
 	private IJournal journal;
@@ -40,7 +44,19 @@ public class UniversiteRepository implements IUnivRepo { {
 
     @Override 
     public int GetNbrLivre(int IdUniv) throws SQLException {
+    	Universite univ= GetById(IdUniv);
+		AbstractFactory turbo = new Type();
+		Package pack = turbo.getPackage(univ.getPack());
+        return pack.getNbrLivreAutorise();
+    }
+    @Override
+	public int NbrBonus(int IdUniv) throws SQLException{
 
-		return nbrLivre;
+		Universite univ= GetById(IdUniv);
+		AbstractFactory turbo = new Type();
+		Package pack = turbo.getPackage(univ.getPack());
+
+		return pack.getNbrLivreBonus();
+	
 	}
 }
