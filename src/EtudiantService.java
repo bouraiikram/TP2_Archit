@@ -15,7 +15,7 @@ public class EtudiantService {
 		this.journal  = comp;   
 	}
 	
-	boolean inscription (Etudiant Stud) throws SQLException	
+	boolean inscription (IEtudiant Stud) throws SQLException	
 	{
 		Universite univ=UnivRep.GetById(Stud.getId_universite());
 	   
@@ -31,13 +31,25 @@ public class EtudiantService {
 		 journal.outPut_Msg("Log: Fin de l'opération d'ajout de l'étudiant avec matricule "+Stud.getMatricule());
 		
 		 StudRep.add(stud);
+		 AjouterBonus(Stud);
+		 
 		 journal.outPut_Msg("Log: Fin de l'opération d'ajout de l'étudiant avec matricule "+matricule);
 		 return true;
 	    
 		
 	}
 	
-	
+	public void AjouterBonus(IEtudiant Stud) throws SQLException {
+		Universite univ=UnivRep.GetById(Stud.getId_universite());
+		int nbr = 0;
+		if (UnivRep.GetNbrLivre(univ)==10){
+			nbr = 5;
+		}
+		if (UnivRep.GetNbrLivre(univ)==20){
+			nbr = 10;
+		}
+		Stud.bonus(nbr);
+	}
 	
 
 public ArrayList<Etudiant> GetEtudiantParUniversitye()

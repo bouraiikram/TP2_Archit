@@ -22,7 +22,7 @@ public class MainApp {
 			IUnivRepo UnivRep= new UniversiteRepository(comp);
 			EtudiantService serv=new EtudiantService(StudRep, UnivRep, comp);
 			
-			Etudiant etudiant = new Etudiant(2, "Guendouziiiii", "wassila", "guen@gmail.com","xxxx", 1); 
+			Etudiant etudiant = new IEtudiant(2, "Guendouziiiii", "wassila", "guen@gmail.com","xxxx", 1); 
 			
 			try {
 				serv.inscription(etudiant);
