@@ -37,4 +37,24 @@ public class UniversiteRepository implements IUnivRepo { {
 		
 	}	
 	
+	@Override
+	public int GetNbrLivre(Universite univ) throws SQLException {
+
+		int nbrLivre = 0;
+
+		if (univ.getPack() == TypePackage.Standard)
+	    {
+			nbrLivre=10;
+	    }
+	    if (univ.getPack() == TypePackage.Premium)
+	    {
+	    	nbrLivre=10*2;
+	    }
+	    if (univ.getPack() == TypePackage.Illimité)
+	    {
+	    	nbrLivre=0;
+	    }
+
+		return nbrLivre;
+	}
 }
