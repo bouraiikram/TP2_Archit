@@ -7,15 +7,26 @@ public class MainApp {
 
 
 		EtudiantService serv=new EtudiantService();
-		try {
-			serv.inscription(2, "Guendouziiiii", "wassila", "guen@gmail.com","xxxx", 1);
+		
+			AfficheComposite comp = new AfficheComposite();
+
+			IJournal Ecran = new AfficheEcran();
+			IJournal Fichier = new AfficheFichier();
+			IJournal DateClass = new AfficheDateClass();
+
+			comp.ajouter(Ecran);
+			comp.ajouter(Fichier);
+			comp.ajouter(DateClass);
+
+			IEtudRepo StudRep = new EtudiantRepository(comp);
+			IUnivRepo UnivRep= new UniversiteRepository(comp);
+			EtudiantService serv=new EtudiantService(StudRep, UnivRep, comp);
 			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			IEtudRepo StudRep = new EtudiantRepository();
-			IUnivRepo UnivRep= new UniversiteRepository();
-			EtudiantService serv=new EtudiantService(StudRep, UnivRep);
-			
+			try {
+				serv.inscription(2, "Guendouziiiii", "wassila", "guen@gmail.com","xxxx", 1);
+				
+			} catch (Exception e) {
+
 			e.printStackTrace();
 		}
 	}
