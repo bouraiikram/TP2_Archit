@@ -17,7 +17,7 @@ public class EtudiantService {
 	
 	boolean inscription (IEtudiant Stud) throws SQLException	
 	{
-		Universite univ=UnivRep.GetById(Stud.getId_universite());
+		
 	   
 		AfficheDateClass.setSender("EtudiantService");
 		
@@ -25,13 +25,16 @@ public class EtudiantService {
 	     
 		if (StudRep.VerifEmailMat(Stud.getMatricule(), Stud.getEmail()))
 	    {	return false;	}
-		Stud.setNbLivreMensuel_Autorise(UnivRep.GetNbrLivre(univ));
+		
+		int nbrLivreAutorisé = UnivRep.GetNbrLivre(Stud.getId_universite());
+		 Stud.setNbLivreMensuel_Autorise(nbrLivreAutorisé);
+     
 
 		
-		 journal.outPut_Msg("Log: Fin de l'opération d'ajout de l'étudiant avec matricule "+Stud.getMatricule());
 		
-		 StudRep.add(stud);
 		 AjouterBonus(Stud);
+		 
+		 StudRep.add(stud);
 		 
 		 journal.outPut_Msg("Log: Fin de l'opération d'ajout de l'étudiant avec matricule "+matricule);
 		 return true;
@@ -40,14 +43,7 @@ public class EtudiantService {
 	}
 	
 	public void AjouterBonus(IEtudiant Stud) throws SQLException {
-		Universite univ=UnivRep.GetById(Stud.getId_universite());
-		int nbr = 0;
-		if (UnivRep.GetNbrLivre(univ)==10){
-			nbr = 5;
-		}
-		if (UnivRep.GetNbrLivre(univ)==20){
-			nbr = 10;
-		}
+		int nbr = UnivRep.NbrBonus(Stud.getId_universite());
 		Stud.bonus(nbr);
 	}
 	
