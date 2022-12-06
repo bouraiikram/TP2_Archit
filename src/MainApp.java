@@ -12,6 +12,10 @@ public class MainApp {
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			IEtudRepo StudRep = new EtudiantRepository();
+			IUnivRepo UnivRep= new UniversiteRepository();
+			EtudiantService serv=new EtudiantService(StudRep, UnivRep);
+			
 			e.printStackTrace();
 		}
 	}

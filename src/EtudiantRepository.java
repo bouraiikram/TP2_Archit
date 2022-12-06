@@ -5,10 +5,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class EtudiantRepository {
+public class EtudiantRepository implements IEtudRepo {
 	
 	
-	void add(Etudiant E) throws SQLException
+	public void add(Etudiant E) throws SQLException
 	{
 
 		DBConnection BD= new DBConnection();
@@ -26,8 +26,7 @@ public class EtudiantRepository {
 		connect.close();
 	 }
 
-
-	boolean Exists(String email) throws SQLException	
+	public boolean Exists(String email) throws SQLException	
 	{
 		DBConnection BD= new DBConnection();
 		Connection connect=BD.getConn();
@@ -46,7 +45,7 @@ public class EtudiantRepository {
 		return false;
 	}
 	
-	boolean Exists(int mat) throws SQLException	
+	public boolean Exists(int mat) throws SQLException	
 	{
 		Connection connect=DBConnection.getConn();
 		
